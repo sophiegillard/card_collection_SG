@@ -1,0 +1,50 @@
+let position = document.getElementsByClassName('main__content__recipe__cards');
+console.log(position);
+
+var wizards = ['Hermione', 'Neville', 'Gandalf'];
+
+// Get the position element
+let position = document.getElementsByClassName('main__content__recipe__cards');
+
+// Create markup
+position.innerHTML = '<ul>' + wizards.map(function (wizard) {
+	return '<li>' + wizard + '</li>';
+}).join('') + '</ul>';
+
+
+//let card = document.createElement(div);
+//cardPosition.appendChild(card);
+
+
+//PLACING THE OBJECTS IN THE HTML
+let main = document.createElement('div');
+let name = document.createElement('h2');
+let category = document.createElement('p');
+let diet = document.createElement('p');
+let nameText= document.createTextNode(collectionRecipe.name);
+//put text in h2
+name.appendChild(nameText);
+console.log(nameText);
+console.log(name);
+
+let position = document.getElementsByClassName('main__content__recipe__cards');
+console.log(position);
+
+
+
+ //adding new elements
+ let cardName= document.createElement('article');
+ let name = document.createElement('h2');
+ let category = document.createElement('p');
+ let diet = document.createElement('p');
+ let nameText= document.createTextNode(list[i].name);
+ let categoryText= document.createTextNode(list[i].category);
+ let dietText= document.createTextNode(list[i].diet);
+
+ name.appendChild(nameText);
+ category.appendChild(categoryText);
+ diet.appendChild(dietText);
+ cardName.appendChild(name);
+ cardName.appendChild(category);
+ cardName.appendChild(diet);
+

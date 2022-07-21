@@ -1,9 +1,13 @@
+
+// COLLECTION OF OBJECTS == RECIPES
 const collectionRecipe = [
  //Object 1
-    {
+    {   
+// faut-il le mettre??      id: "1",
       name: "Good Old Fashioned Pancakes",
       category: "Breakfast",
       diet: "Vegetarian",
+      photo: 'assests/pancakes.jpeg',
       serves: 8,
       preparationTime: "20 minutes",
       ingredients: [
@@ -25,6 +29,7 @@ const collectionRecipe = [
         name: "French Toast ",
         category: "Breakfast",
         diet: "Vegetarian",
+        photo: 'assests/pain_perdu.jpeg',
         serves: 3,
         preparationTime: "15 minutes",
         ingredients: [
@@ -47,6 +52,7 @@ const collectionRecipe = [
         name: "Salmon Poke Bowl",
         category: "Lunch",
         diet: "Classic",
+        photo: 'assests/salmon_poke.jpeg',
         serves: 2,
         preparationTime: "30 minutes",
         ingredients: [
@@ -75,6 +81,7 @@ const collectionRecipe = [
       name: "Italian Peppers and Chickpeas",
       category: "Lunch",
       diet: "Vegan",
+      photo: 'assests/chickpeas.jpeg',
       serves: 6,
       preparationTime: "30 minutes",
       ingredients: [
@@ -105,6 +112,7 @@ const collectionRecipe = [
     name: "Spaghetti Carbonara",
     category: "Diner",
     diet: "Classic",
+    photo: 'assests/carbo.jpeg',
     serves: 4,
     preparationTime: "30",
     ingredients: [
@@ -129,6 +137,7 @@ const collectionRecipe = [
     name: "Chicken Fajitas",
     category: "Diner",
     diet: "Classic",
+    photo: 'assests/fajita.jpeg',
     serves: 6,
     preparationTime: "30 minutes",
     ingredients: [
@@ -158,6 +167,7 @@ const collectionRecipe = [
     name: "2-Ingredients Ice Cream",
     category: "Dessert",
     diet: "vegetarian",
+    photo: 'assests/ice_Cream.jpeg',
     serves: 3,
     preparationTime: "20 minutes",
     ingredients: [
@@ -177,6 +187,7 @@ const collectionRecipe = [
     name: "Chocolate mousse",
     category: "Dessert",
     diet: "vegetarian",
+    photo: 'assests/mousse.jpeg',
     serves: 6,
     preparationTime: "90 minutes",
     ingredients: [
@@ -202,6 +213,7 @@ const collectionRecipe = [
     name: "Mango Smoothie with Spinach and Banana",
     category: "Snack",
     diet: "vegan",
+    photo: 'assests/smoothis.jpeg',
     serves: 1,
     preparationTime: "5 minutes",
     equipment:"Blender",
@@ -221,6 +233,7 @@ const collectionRecipe = [
     name: "Soft Oatmeal Cookies",
     category: "Snack",
     diet: "vegetarien",
+    photo: 'assests/cookie.jpeg',
     serves: 12,
     preparationTime: "120 minutes",
     ingredients: [
@@ -246,4 +259,72 @@ const collectionRecipe = [
   ];
 
 
-  console.log(collectionRecipe);
+function showName(list){
+
+  let numberOfRecipe = list.length;
+  let containerCard = document.querySelector('.main__content__recipe__cards');
+  
+  // Loop that creates a section and a paragraph for each element of the list
+      for (let i = 0; i < numberOfRecipe; i++) {
+  
+      //adding new elements
+        //CREATE THE INDIVIDUAL DIV OF MY CARDS
+        let articleDiv = document.createElement('div');
+        containerCard.appendChild(articleDiv);
+        articleDiv.classList.add("card");
+
+        //CREATE CARD HEADER OF MY CARD
+          // CREATE THE SECTION
+          let cardHeader= document.createElement("section");
+          articleDiv.appendChild(cardHeader);
+          cardHeader.classList.add("card__header");
+
+          //create ARTICLE Name
+          let cardName= document.createElement('article');
+          cardHeader.appendChild(cardName);
+          // Create name element
+          let name = document.createElement('h2');
+          let nameText= document.createTextNode(list[i].name);
+          name.appendChild(nameText);
+          cardName.appendChild(name);
+          //Create category paragraph
+          let category = document.createElement('p');
+          let categoryText= document.createTextNode(list[i].category);
+          category.appendChild(categoryText);
+          cardName.appendChild(category);
+          //Create diet paragraph
+          let diet = document.createElement('p');
+          let dietText= document.createTextNode(list[i].diet);
+          diet.appendChild(dietText);
+          cardName.appendChild(diet);
+          //Create image 
+          let img = document.createElement('img');
+          img.src=(list[i].photo);
+          cardHeader.appendChild(img);
+      
+        //create ARTICLE ingredients
+
+        //create section card_content
+          let cardContent = document.createElement('section');
+          articleDiv.appendChild(cardContent);
+          cardContent.classList.add("card__content");
+          //create Ingredients article
+          let ingredients = document.createElement('p');
+          let ingredientsText= document.createTextNode(list[i].ingredients);
+          diet.appendChild(ingredientsText);
+          cardContent.appendChild(ingredients);
+
+          let directions = document.createElement('p');
+          let directionsText= document.createTextNode(list[i].directions);
+          diet.appendChild(directionsText);
+          cardContent.appendChild(directions);
+
+        //create section card_footer
+          let cardFooter = document.createElement('section');
+          articleDiv.appendChild(cardFooter);
+          cardFooter.classList.add("card__footer");
+      }
+}  
+
+showName(collectionRecipe);
+

@@ -1,0 +1,23 @@
+html{
+    scroll-behavior: smooth;
+}
+.main__description{
+    border: solid rgb(8, 0, 255) 5px;
+}
+
+.header__block{
+    display: flex;
+    border: solid red 2px;
+}
+
+.nav__list{
+    display: flex;
+    flex-direction: row;
+        }
+
+* {
+ outline: solid rgb(192, 255, 212) 1px;
+}
+.card{
+    outline: pink solid 5px;
+}
