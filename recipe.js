@@ -302,27 +302,36 @@ function showName(list){
           img.src=(list[i].photo);
           cardHeader.appendChild(img);
       
-        //create ARTICLE ingredients
 
-        //create section card_content
+        //create SECTION card_content
           let cardContent = document.createElement('section');
           articleDiv.appendChild(cardContent);
           cardContent.classList.add("card__content");
           //create Ingredients article
           let ingredients = document.createElement('p');
           let ingredientsText= document.createTextNode(list[i].ingredients);
-          diet.appendChild(ingredientsText);
+          ingredients.appendChild(ingredientsText);
           cardContent.appendChild(ingredients);
-
+          //create Directions article
           let directions = document.createElement('p');
           let directionsText= document.createTextNode(list[i].directions);
-          diet.appendChild(directionsText);
+          directions.appendChild(directionsText);
           cardContent.appendChild(directions);
 
         //create section card_footer
           let cardFooter = document.createElement('section');
           articleDiv.appendChild(cardFooter);
           cardFooter.classList.add("card__footer");
+          //create Ingredients article
+          let serves = document.createElement('p');
+          let servesText= document.createTextNode(list[i].serves);
+          serves.appendChild(servesText);
+          cardFooter.appendChild(serves);
+          //create Directions article
+          let preparationTime = document.createElement('p');
+          let preparationTimeText= document.createTextNode(list[i].preparationTime);
+          preparationTime.appendChild(preparationTimeText);
+          cardFooter.appendChild(preparationTime);
       }
 }  
 

@@ -1,13 +1,78 @@
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import "assests/_functions_mixin.scss";
+
 html{
     scroll-behavior: smooth;
-}
-.main__description{
-    border: solid rgb(8, 0, 255) 5px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    
 }
 
+// HEADER
 .header__block{
-    display: flex;
-    border: solid red 2px;
+    border: solid red 3px;
+    height: 10rem;
+    text-align: center;
+    //Style of the navbar
+    & .header__nav{
+        display: flex;
+        flex-direction: row-reverse;
+    //Style of the links
+        & .nav__list{
+            
+            font-size: 1.5rem;
+            font-weight: lighter;
+            color: #{$grey-details};
+            text-transform:uppercase;
+            letter-spacing: 0.4em;
+
+            align-self: center;
+            justify-content: space-around;
+
+            flex: 50%;
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    //Style of the logo
+        & .nav__logo{
+            height: 8rem;
+        }
+    }   
+    
+    //Style of the Header Page
+    & .header__page{
+        position:relative;
+
+    //style of the image
+        .header__image{
+        height:max-content;
+        width:100%;
+        }
+    //style of the title
+        .header__title__block{
+        font-family: 'Nothing You Could Do', cursive;
+        color:$light-green;
+        font-size: 5rem;
+
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+
+    
+
+        position: absolute;
+        bottom: 50%;
+        left: 20%;
+        right: 20%;
+
+        background-color: rgba(255, 255, 255, 0.494);
+        
+        
+
+        }
+    }    
 }
 
 .nav__list{
@@ -15,9 +80,14 @@ html{
     flex-direction: row;
         }
 
+
+//border to delete
 * {
- outline: solid rgb(192, 255, 212) 1px;
+ outline: solid rgba(192, 255, 212, 0) 1px;
 }
 .card{
     outline: pink solid 5px;
+}
+.main__description{
+    border: solid rgb(8, 0, 255) 5px;
 }
