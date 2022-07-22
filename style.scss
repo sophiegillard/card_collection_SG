@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 @import "assests/_functions_mixin.scss";
+@import "assests/_cardsStyle";
 
 html{
     scroll-behavior: smooth;
@@ -9,13 +10,14 @@ html{
 
 // HEADER
 .header__block{
-    border: solid red 3px;
-    height: 10rem;
+    height: 100vh;
     text-align: center;
     //Style of the navbar
     & .header__nav{
         display: flex;
         flex-direction: row-reverse;
+
+        border-top: solid 0.5rem $medium-green;
     //Style of the links
         & .nav__list{
             
@@ -41,44 +43,44 @@ html{
         }
     }   
     
-    //Style of the Header Page
-    & .header__page{
-        position:relative;
-
-    //style of the image
-        .header__image{
-        height:max-content;
-        width:100%;
-        }
     //style of the title
-        .header__title__block{
-        font-family: 'Nothing You Could Do', cursive;
-        color:$light-green;
-        font-size: 5rem;
-
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
-
+    & .header__title__block{
+        background-image: url('assests/kitchen.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height:88%;
     
+      
+        color:$light-green;
+        font-size: 4.5rem;
+        text-align: center;
 
-        position: absolute;
-        bottom: 50%;
-        left: 20%;
-        right: 20%;
-
-        background-color: rgba(255, 255, 255, 0.494);
+        display: flex;
+        justify-content: center;
         
+       
         
-
-        }
-    }    
+        & .header__title{
+           & .header__title__main{
+            font-size: 10rem;
+            font-family: 'Nothing You Could Do', cursive;
+            padding-top: 3rem;
+           }
+        }  
+        
+    }  
+        
 }
 
 .nav__list{
     display: flex;
     flex-direction: row;
         }
+
+// CARD
+.card{
+    @include cardStyle;
+}
 
 
 //border to delete

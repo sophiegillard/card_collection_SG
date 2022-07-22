@@ -267,7 +267,7 @@ function showName(list){
   // Loop that creates a section and a paragraph for each element of the list
       for (let i = 0; i < numberOfRecipe; i++) {
   
-      //adding new elements
+  //adding new elements from COLLECTION
         //CREATE THE INDIVIDUAL DIV OF MY CARDS
         let articleDiv = document.createElement('div');
         containerCard.appendChild(articleDiv);
@@ -282,58 +282,132 @@ function showName(list){
           //create ARTICLE Name
           let cardName= document.createElement('article');
           cardHeader.appendChild(cardName);
+          cardName.classList.add("card__title__block");
           // Create name element
           let name = document.createElement('h2');
           let nameText= document.createTextNode(list[i].name);
           name.appendChild(nameText);
           cardName.appendChild(name);
+          name.classList.add("card__title");
           //Create category paragraph
           let category = document.createElement('p');
           let categoryText= document.createTextNode(list[i].category);
           category.appendChild(categoryText);
           cardName.appendChild(category);
+          category.classList.add("card__category");
           //Create diet paragraph
           let diet = document.createElement('p');
           let dietText= document.createTextNode(list[i].diet);
           diet.appendChild(dietText);
           cardName.appendChild(diet);
+          diet.classList.add("card__diet");
           //Create image 
           let img = document.createElement('img');
           img.src=(list[i].photo);
           cardHeader.appendChild(img);
+          img.classList.add("card__image");
       
 
         //create SECTION card_content
           let cardContent = document.createElement('section');
           articleDiv.appendChild(cardContent);
           cardContent.classList.add("card__content");
-          //create Ingredients article
-          let ingredients = document.createElement('p');
-          let ingredientsText= document.createTextNode(list[i].ingredients);
-          ingredients.appendChild(ingredientsText);
-          cardContent.appendChild(ingredients);
-          //create Directions article
+          //create Ingredients SECTION
+          let ingredientsDiv = document.createElement('div');
+          cardContent.appendChild(ingredientsDiv);
+          ingredientsDiv.classList.add("card__content__ingredients");
+
+                  //create the ingredients title
+                  let ingredientsTitle = document.createElement('h3');
+                  // add text
+                  ingredientsTitle.innerText = 'Ingredients :';
+                  // grab target element reference
+                  ingredientsDiv.appendChild(ingredientsTitle);
+                  ingredientsTitle.classList.add("card__ingredients__title");
+
+                    //create the ingredients paragraph      
+                  let ingredients = document.createElement('p');
+                  let ingredientsText= document.createTextNode(list[i].ingredients);
+                  ingredients.appendChild(ingredientsText);
+                  ingredientsDiv.appendChild(ingredients);
+                  ingredients.classList.add("card__ingredients");
+
+          //create Directions SECTION
+          let directionsDiv = document.createElement('div');
+          cardContent.appendChild(directionsDiv);
+          directionsDiv.classList.add("card__content__directions");
+
+                 //create the ingredients title
+                 let directionsTitle = document.createElement('h3');
+                 // add text
+                 directionsTitle.innerText = 'Directions :';
+                 // grab target element reference
+                 directionsDiv.appendChild(directionsTitle);
+                 directionsTitle.classList.add("card__directions__title");
+
+            //create the directions paragraph    
           let directions = document.createElement('p');
           let directionsText= document.createTextNode(list[i].directions);
           directions.appendChild(directionsText);
-          cardContent.appendChild(directions);
+          directionsDiv.appendChild(directions);
+          directions.classList.add("card__directions");
+
+
 
         //create section card_footer
           let cardFooter = document.createElement('section');
           articleDiv.appendChild(cardFooter);
           cardFooter.classList.add("card__footer");
-          //create Ingredients article
+          //create serves SECTION
+              let servesDiv = document.createElement('div');
+              cardFooter.appendChild(servesDiv);
+              servesDiv.classList.add("card__footer__serves");
+
+                  //create the title
+                  let servesTitle = document.createElement('h3');
+                  // add text
+                  servesTitle.innerText = 'Serves :';
+                  // grab target element reference
+                  servesDiv.appendChild(servesTitle);
+                  servesTitle.classList.add("card__servesTime__title");      
+
+
           let serves = document.createElement('p');
           let servesText= document.createTextNode(list[i].serves);
           serves.appendChild(servesText);
-          cardFooter.appendChild(serves);
-          //create Directions article
+          servesDiv.appendChild(serves);
+          serves.classList.add("card__serves");
+          //create PrepTime SECTION
+              let timeDiv = document.createElement('div');
+              cardFooter.appendChild(timeDiv);
+              timeDiv.classList.add("card__footer__time");
+
+                 //create the title
+                 let timeTitle = document.createElement('h3');
+                 // add text
+                 timeTitle.innerText = 'Preparation Time :';
+                 // grab target element reference
+                 timeDiv.appendChild(timeTitle);
+                 timeTitle.classList.add("card__prepTime__title");  
+
           let preparationTime = document.createElement('p');
           let preparationTimeText= document.createTextNode(list[i].preparationTime);
           preparationTime.appendChild(preparationTimeText);
-          cardFooter.appendChild(preparationTime);
+          timeDiv.appendChild(preparationTime);
+          preparationTime.classList.add("card__prepTime");
+
+        
       }
 }  
-
+  
 showName(collectionRecipe);
 
+
+//Creating new elements not in Collection
+
+
+      
+        
+        // insert the element before target element
+
+        
