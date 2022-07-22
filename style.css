@@ -1,7 +1,8 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
 html {
   scroll-behavior: smooth;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: Plus Jakarta Sans, sans-serif;
+  width: 100vw;
 }
 
 .header__block {
@@ -43,7 +44,7 @@ html {
 }
 .header__block .header__title__block .header__title .header__title__main {
   font-size: 10rem;
-  font-family: "Nothing You Could Do", cursive;
+  font-family: Nothing You Could Do, cursive;
   padding-top: 3rem;
 }
 
@@ -52,28 +53,85 @@ html {
   flex-direction: row;
 }
 
-.card {
+.main__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  height: 15rem;
+  box-shadow: -3px 19px 14px -7px rgba(88, 129, 87, 0.44);
+}
+.main__description .description__title {
+  color: #588157;
+  font-size: 3.5rem;
+  font-weight: 800;
+  font-family: Nothing You Could Do, cursive;
+}
+.main__description .description_texte {
+  color: #98a281;
+  font-size: 1.3rem;
+  width: 76vw;
+  text-align: center;
+  line-height: 2rem;
+  font-weight: 200;
+}
+
+.main__content__recipe__cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100vw;
+  justify-content: space-around;
+  padding: 2rem;
+}
+.main__content__recipe__cards .card {
+  width: 30vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0.5rem;
+  box-shadow: 5px 5px 5px 5px grey;
+}
+.main__content__recipe__cards .card .card__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+.main__content__recipe__cards .card .card__header .card__title__block .card__title {
+  font-family: Nothing You Could Do, cursive;
+  font-size: 2rem;
+  width: 100%;
+}
+.main__content__recipe__cards .card .card__header .card__image {
+  padding: 0;
+  width: 10rem;
+  height: 10rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main__content__recipe__cards .card .card__content h3 {
+  font-family: Nothing You Could Do, cursive;
+  font-size: x-large;
+}
+.main__content__recipe__cards .card .card__content .card__content__ingredients hr {
+  border-width: 0 0 3px;
+  -o-border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
+     border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
+  border-style: solid;
+}
+.main__content__recipe__cards .card .card__footer {
   display: flex;
   flex-direction: column;
 }
-.card .card__header {
+.main__content__recipe__cards .card .card__footer div {
   display: flex;
   flex-direction: row;
+  justify-content: end;
 }
-.card .card__header .card__image {
-  width: 20rem;
-  height: 20rem;
-  contain: size;
-}
-
-* {
-  outline: solid rgba(192, 255, 212, 0) 1px;
-}
-
-.card {
-  outline: pink solid 5px;
-}
-
-.main__description {
-  border: solid rgb(8, 0, 255) 5px;
+.main__content__recipe__cards .card .card__footer hr {
+  border-width: 0 0 3px;
+  -o-border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
+     border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
+  border-style: solid;
 }/*# sourceMappingURL=style.css.map */

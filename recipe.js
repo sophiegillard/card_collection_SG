@@ -3,7 +3,6 @@
 const collectionRecipe = [
  //Object 1
     {   
-// faut-il le mettre??      id: "1",
       name: "Good Old Fashioned Pancakes",
       category: "Breakfast",
       diet: "Vegetarian",
@@ -273,6 +272,9 @@ function showName(list){
         containerCard.appendChild(articleDiv);
         articleDiv.classList.add("card");
 
+        
+        
+
         //CREATE CARD HEADER OF MY CARD
           // CREATE THE SECTION
           let cardHeader= document.createElement("section");
@@ -317,6 +319,10 @@ function showName(list){
           cardContent.appendChild(ingredientsDiv);
           ingredientsDiv.classList.add("card__content__ingredients");
 
+          //CREATING OF A HORIZONTAL LINE
+          let hr = document.createElement('hr');
+          ingredientsDiv.appendChild(hr);
+
                   //create the ingredients title
                   let ingredientsTitle = document.createElement('h3');
                   // add text
@@ -325,12 +331,23 @@ function showName(list){
                   ingredientsDiv.appendChild(ingredientsTitle);
                   ingredientsTitle.classList.add("card__ingredients__title");
 
-                    //create the ingredients paragraph      
-                  let ingredients = document.createElement('p');
-                  let ingredientsText= document.createTextNode(list[i].ingredients);
-                  ingredients.appendChild(ingredientsText);
+                    //create the ingredients LIST      
+                  let ingredients = document.createElement('ul');
+                 
                   ingredientsDiv.appendChild(ingredients);
-                  ingredients.classList.add("card__ingredients");
+                  ingredients.classList.add("card__ingredients__list");
+
+
+                      //CREATE A LIST OF INGREDIENTS ITEMS THROUGH A LOOP
+                        let listOfIngredients= list[i].ingredients;
+                        console.log (listOfIngredients);
+
+                        for (const j of listOfIngredients) {
+                          let listItemIngredient = document.createElement('li');
+                          listItemIngredient.appendChild(document.createTextNode(j))
+                          ingredients.appendChild(listItemIngredient);
+                          listItemIngredient.classList.add("card__ingredients__list__items");
+                        };
 
           //create Directions SECTION
           let directionsDiv = document.createElement('div');
@@ -345,17 +362,28 @@ function showName(list){
                  directionsDiv.appendChild(directionsTitle);
                  directionsTitle.classList.add("card__directions__title");
 
-            //create the directions paragraph    
-          let directions = document.createElement('p');
-          let directionsText= document.createTextNode(list[i].directions);
-          directions.appendChild(directionsText);
+            //create the directions List    
+          let directions = document.createElement('ul');
           directionsDiv.appendChild(directions);
-          directions.classList.add("card__directions");
+          directions.classList.add("card__directions__list");
 
+
+                  //CREATE A LIST OF DIRECTIONS ITEMS THROUGH A LOOP
+                  let listOfDirections= list[i].directions;
+                  console.log (listOfDirections);
+
+                  for (const j of listOfDirections) {
+                    let listItemDirections = document.createElement('li');
+                    listItemDirections.appendChild(document.createTextNode(j))
+                    directions.appendChild(listItemDirections);
+                    listItemDirections.classList.add("card__Directions__list__items");
+                  };
 
 
         //create section card_footer
           let cardFooter = document.createElement('section');
+              let hrTwo = document.createElement('hr');
+              cardFooter.appendChild(hrTwo);
           articleDiv.appendChild(cardFooter);
           cardFooter.classList.add("card__footer");
           //create serves SECTION

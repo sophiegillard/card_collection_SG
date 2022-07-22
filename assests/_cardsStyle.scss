@@ -1,16 +1,74 @@
 @mixin cardStyle{
-    
-display: flex;
-flex-direction: column;
 
-    & .card__header{
-        display: flex;
-        flex-direction: row;
+display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 100vw;
 
-        & .card__image{
-            width: 20rem;
-            height:20rem;
-            contain:size;
-        }
+justify-content: space-around;
+
+padding: 2rem;
+
+
+    & .card{
+        width: 30vw;
+        height: 100vh;
+        overflow: hidden;
+
+        padding: 0.5rem;
+        box-shadow: 5px 5px 5px 5px grey;
+
+
+            & .card__header{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                position: relative;
+            
+
+                & .card__title__block{
+                    & .card__title{
+                        font-family: $font-titles;
+                        font-size: 2rem;
+                        width: 100%;
+                    }
+                }
+
+                & .card__image{
+                    padding: 0;
+                    width:  10rem;
+                    height: 10rem;
+                    object-fit: cover;
+                }
+            }
+
+
+            & .card__content{
+                h3{
+                    font-family: $font-titles;
+                            font-size: x-large;
+                }
+                
+                & .card__content__ingredients{
+                    hr{
+                        @include hrStyle;
+                    }
+               
+                }
+            }
+
+            & .card__footer{
+                display: flex;
+                flex-direction: column;
+                div{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: end;
+                }
+                hr{
+                    @include hrStyle;
+                }
+            }
+
     }
 }

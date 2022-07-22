@@ -3,3 +3,19 @@
 $grey-details: #c2beb2;
 $light-green: #ebeddb;
 $medium-green: #588157;
+
+//FONTS
+$font-titles: Nothing You Could Do, cursive;
+$font-body: 'Plus Jakarta Sans', sans-serif;
+
+//MIXIN Horizontal LINES
+@mixin hrStyle {
+    border-width: 0 0 3px;
+    $color: rgb(126, 175, 81);
+    border-image: linear-gradient(
+    90deg,
+    rgba($color, 0),
+    rgba($color, 1) 50%,
+    rgba($color, 0) 100%) 0 0 100%;
+    border-style: solid; 
+}

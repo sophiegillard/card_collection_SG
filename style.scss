@@ -4,7 +4,8 @@
 
 html{
     scroll-behavior: smooth;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: #{$font-body};
+    width: 100vw;
     
 }
 
@@ -63,7 +64,7 @@ html{
         & .header__title{
            & .header__title__main{
             font-size: 10rem;
-            font-family: 'Nothing You Could Do', cursive;
+            font-family: $font-titles;
             padding-top: 3rem;
            }
         }  
@@ -77,19 +78,39 @@ html{
     flex-direction: row;
         }
 
+//INTRODUCTION BEFORE THE CARDS
+.main__description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+  
+    height: 15rem;
+
+    box-shadow: -3px 19px 14px -7px rgba(88,129,87,0.44);
+
+    & .description__title{
+        color:$medium-green;
+        font-size: 3.5rem;
+        font-weight: 800;
+        font-family: $font-titles;
+    }
+    & .description_texte{
+        color:#98a281;
+        font-size: 1.3rem;
+        width: 76vw;
+        text-align: center;
+        line-height: 2rem;
+        font-weight: 200
+    }
+}
+
+
 // CARD
-.card{
+.main__content__recipe__cards{
     @include cardStyle;
 }
 
 
-//border to delete
-* {
- outline: solid rgba(192, 255, 212, 0) 1px;
-}
-.card{
-    outline: pink solid 5px;
-}
-.main__description{
-    border: solid rgb(8, 0, 255) 5px;
-}
+
