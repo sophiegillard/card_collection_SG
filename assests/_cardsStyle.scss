@@ -12,61 +12,176 @@ padding: 2rem;
 
     & .card{
         width: 30vw;
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
 
         padding: 0.5rem;
-        box-shadow: 5px 5px 5px 5px grey;
+        box-shadow: 1px 1px 2px 2px rgba(128, 128, 128, 0.56);
 
 
-            & .card__header{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                position: relative;
+        &__image{
+            padding: 0;
+            width:  100%;
+            height: 20vw;
             
-
+            object-fit: cover;
+        }
+        &__header{
                 & .card__title__block{
+                    text-align: center;
+                    height: 8rem;
+    
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    
                     & .card__title{
                         font-family: $font-titles;
+                        text-transform: uppercase;
                         font-size: 2rem;
                         width: 100%;
+                        height: 70%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    & .card__content__description{
+                        display: flex;
+                        justify-content: space-around;
+                        font-size: larger;
+                        font-weight: lighter;
+                        height: 30%;
+                        @include description;
+                        
+                        & .breakfast{
+                            @include underline (#FFE6E6);
+                        }
+                        & .lunch{
+                            @include underline (#fdebd3);
+                        }
+                        & .diner{
+                            @include underline (#DAEAF1);
+                        }
+                        & .dessert{
+                            @include underline (#C2DED1);
+                        }
+                        & .snack{
+                            @include underline (#D9D7F1);
+                        }
+                        & .vegetarian{
+                            @include underline (#C4DFAA);
+                        }
+                        & .vegan{
+                            @include underline (#E4DCCF);
+                        }
+                        & .classic{
+                            @include underline (#ff9999);
+                        }
                     }
                 }
 
-                & .card__image{
-                    padding: 0;
-                    width:  10rem;
-                    height: 10rem;
-                    object-fit: cover;
-                }
             }
 
 
-            & .card__content{
+        &__content{
+            padding: 1rem;
+
                 h3{
                     font-family: $font-titles;
-                            font-size: x-large;
+                    font-size: x-large;
+                    padding-top: 1rem;
+                    padding-bottom: 0.3rem;
                 }
                 
-                & .card__content__ingredients{
-                    hr{
-                        @include hrStyle;
-                    }
+                &__ingredients{
+                   .card__ingredients__list{
+                        display: block;
+                    
+                      li{
+                        display: block;
+                        position: relative;
+                        padding: 0.5rem 0 0.5rem 2.5rem;
+                        cursor: pointer;
+                        animation: undone .5s;
+                      }
+                      
+                      li::before {
+                        content: "\f096"; /* empty square */
+                        display: block;
+                        position: absolute;
+                        left: 0.7rem;
+                        font: 1.5em 'FontAwesome';
+                      }
+                      
+                      li:hover, ul:focus + li {
+                        background-color: rgba(255, 255, 255, .2);
+                      }
+                      
+                      ul:checked + li {
+                        order: 2;
+                        animation: done .5s;
+                      }
+                      
+                      ul:checked + li::before {
+                        content: '\f058'; /* circle checkmark */
+                      }
+                   }
+                }
                
+                &__directions{
+                    .card__directions__list{
+                        text-align: justify;
+                        counter-reset: item;
+                        padding:0.5rem 0 0.5rem 2rem;
+                        li::before{
+                           
+                            background: $medium-green;
+                            border-radius: 50px;
+                            color: #fff;
+                            content: counter(item) "";
+                            counter-increment: item;
+                            display: inline-flex;
+                            height: 1.2rem;
+                            justify-content: center;
+                            padding-left: -5rem;
+                             margin-left: -32px;
+                           
+                            
+                            position: absolute;
+                            width: 1.2rem;
+                        }
+                        li{
+                            padding-left: 0.7rem;
+                            margin: 0.5rem 0;
+
+                        }
+                    }
+
                 }
             }
 
-            & .card__footer{
+            &__footer{
+                padding: 1rem;
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
+                justify-content: spxace-around;
+
+                text-transform: uppercase;
+                font-weight: 100;
+                font-size: 0.9rem;
+
+                background-color: $light-green;
+                
                 div{
                     display: flex;
                     flex-direction: row;
                     justify-content: end;
                 }
+                .card_prepTime_title{
+                    font-weight: 800;
+                }
                 hr{
-                    @include hrStyle;
+                    display: none;
                 }
             }
 

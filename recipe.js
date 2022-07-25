@@ -5,7 +5,7 @@ const collectionRecipe = [
     {   
       name: "Good Old Fashioned Pancakes",
       category: "Breakfast",
-      diet: "Vegetarian",
+      diet: "vegetarian",
       photo: 'assests/pancakes.jpeg',
       serves: 8,
       preparationTime: "20 minutes",
@@ -27,7 +27,7 @@ const collectionRecipe = [
     {
         name: "French Toast ",
         category: "Breakfast",
-        diet: "Vegetarian",
+        diet: "vegetarian",
         photo: 'assests/pain_perdu.jpeg',
         serves: 3,
         preparationTime: "15 minutes",
@@ -79,7 +79,7 @@ const collectionRecipe = [
       {
       name: "Italian Peppers and Chickpeas",
       category: "Lunch",
-      diet: "Vegan",
+      diet: "vegan",
       photo: 'assests/chickpeas.jpeg',
       serves: 6,
       preparationTime: "30 minutes",
@@ -209,7 +209,7 @@ const collectionRecipe = [
     },
 //Object 9
   {
-    name: "Mango Smoothie with Spinach and Banana",
+    name: "Smoothie",
     category: "Snack",
     diet: "vegan",
     photo: 'assests/smoothis.jpeg',
@@ -231,7 +231,7 @@ const collectionRecipe = [
   {
     name: "Soft Oatmeal Cookies",
     category: "Snack",
-    diet: "vegetarien",
+    diet: "vegetarian",
     photo: 'assests/cookie.jpeg',
     serves: 12,
     preparationTime: "120 minutes",
@@ -273,9 +273,13 @@ function showName(list){
         articleDiv.classList.add("card");
 
         
-        
 
         //CREATE CARD HEADER OF MY CARD
+          //Create image 
+          let img = document.createElement('img');
+          img.src=(list[i].photo);
+          articleDiv.appendChild(img);
+          img.classList.add("card__image");
           // CREATE THE SECTION
           let cardHeader= document.createElement("section");
           articleDiv.appendChild(cardHeader);
@@ -291,23 +295,58 @@ function showName(list){
           name.appendChild(nameText);
           cardName.appendChild(name);
           name.classList.add("card__title");
+          //create Div for category & diet
+          let catDiet = document.createElement('div');
+          cardName.appendChild(catDiet);
+          catDiet.classList.add("card__content__description");
           //Create category paragraph
           let category = document.createElement('p');
           let categoryText= document.createTextNode(list[i].category);
           category.appendChild(categoryText);
-          cardName.appendChild(category);
+          catDiet.appendChild(category);
           category.classList.add("card__category");
+          
+                    //NAME CLASS ACCORDING TO CATEGORY
+                      let categoryLength= list[i].category;
+
+                        if(categoryLength=="Breakfast"){
+                        category.classList.add("breakfast");
+                        } 
+                        else if (categoryLength=="Lunch") {
+                          category.classList.add("lunch");
+                        } 
+                        else if (categoryLength=="Diner") {
+                          category.classList.add("diner");
+                        } 
+                        else if (categoryLength=="Snack") {
+                          category.classList.add("snack");
+                        } 
+                        else if (categoryLength=="Dessert") {
+                          category.classList.add("dessert");
+                        } 
+           
+
           //Create diet paragraph
           let diet = document.createElement('p');
           let dietText= document.createTextNode(list[i].diet);
           diet.appendChild(dietText);
-          cardName.appendChild(diet);
+          catDiet.appendChild(diet);
           diet.classList.add("card__diet");
-          //Create image 
-          let img = document.createElement('img');
-          img.src=(list[i].photo);
-          cardHeader.appendChild(img);
-          img.classList.add("card__image");
+
+                    //NAME CLASS ACCORDING TO DIET
+                      let dietLength= list[i].diet;
+
+                        if(dietLength=="vegetarian"){
+                        diet.classList.add("vegetarian");
+                        } 
+                        else if (dietLength=="vegan") {
+                          diet.classList.add("vegan");
+                        } 
+                        else if (dietLength=="Classic") {
+                          diet.classList.add("classic");
+                        } 
+                      
+           
       
 
         //create SECTION card_content
@@ -336,11 +375,11 @@ function showName(list){
                  
                   ingredientsDiv.appendChild(ingredients);
                   ingredients.classList.add("card__ingredients__list");
+                  ingredients.setAttribute("type", "checkbox");
 
 
                       //CREATE A LIST OF INGREDIENTS ITEMS THROUGH A LOOP
                         let listOfIngredients= list[i].ingredients;
-                        console.log (listOfIngredients);
 
                         for (const j of listOfIngredients) {
                           let listItemIngredient = document.createElement('li');
@@ -366,17 +405,18 @@ function showName(list){
           let directions = document.createElement('ul');
           directionsDiv.appendChild(directions);
           directions.classList.add("card__directions__list");
+          directions.setAttribute("type", "checkbox");
+          
 
 
                   //CREATE A LIST OF DIRECTIONS ITEMS THROUGH A LOOP
                   let listOfDirections= list[i].directions;
-                  console.log (listOfDirections);
-
+          
                   for (const j of listOfDirections) {
                     let listItemDirections = document.createElement('li');
                     listItemDirections.appendChild(document.createTextNode(j))
                     directions.appendChild(listItemDirections);
-                    listItemDirections.classList.add("card__Directions__list__items");
+                    listItemDirections.classList.add("card__directions__list__items");
                   };
 
 
@@ -394,7 +434,7 @@ function showName(list){
                   //create the title
                   let servesTitle = document.createElement('h3');
                   // add text
-                  servesTitle.innerText = 'Serves :';
+                  servesTitle.innerText = 'Serves  : ';
                   // grab target element reference
                   servesDiv.appendChild(servesTitle);
                   servesTitle.classList.add("card__servesTime__title");      
@@ -413,7 +453,7 @@ function showName(list){
                  //create the title
                  let timeTitle = document.createElement('h3');
                  // add text
-                 timeTitle.innerText = 'Preparation Time :';
+                 timeTitle.innerText = 'Preparation Time  : ';
                  // grab target element reference
                  timeDiv.appendChild(timeTitle);
                  timeTitle.classList.add("card__prepTime__title");  

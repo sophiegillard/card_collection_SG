@@ -1,8 +1,9 @@
 @import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto:500,700");
 html {
   scroll-behavior: smooth;
   font-family: Plus Jakarta Sans, sans-serif;
-  width: 100vw;
+  min-width: 100%;
 }
 
 .header__block {
@@ -87,51 +88,181 @@ html {
 }
 .main__content__recipe__cards .card {
   width: 30vw;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   padding: 0.5rem;
-  box-shadow: 5px 5px 5px 5px grey;
+  box-shadow: 1px 1px 2px 2px rgba(128, 128, 128, 0.56);
 }
-.main__content__recipe__cards .card .card__header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: relative;
-}
-.main__content__recipe__cards .card .card__header .card__title__block .card__title {
-  font-family: Nothing You Could Do, cursive;
-  font-size: 2rem;
-  width: 100%;
-}
-.main__content__recipe__cards .card .card__header .card__image {
+.main__content__recipe__cards .card__image {
   padding: 0;
-  width: 10rem;
-  height: 10rem;
+  width: 100%;
+  height: 20vw;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.main__content__recipe__cards .card .card__content h3 {
-  font-family: Nothing You Could Do, cursive;
-  font-size: x-large;
-}
-.main__content__recipe__cards .card .card__content .card__content__ingredients hr {
-  border-width: 0 0 3px;
-  -o-border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
-     border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
-  border-style: solid;
-}
-.main__content__recipe__cards .card .card__footer {
+.main__content__recipe__cards .card__header .card__title__block {
+  text-align: center;
+  height: 8rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
-.main__content__recipe__cards .card .card__footer div {
+.main__content__recipe__cards .card__header .card__title__block .card__title {
+  font-family: Nothing You Could Do, cursive;
+  text-transform: uppercase;
+  font-size: 2rem;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description {
+  display: flex;
+  justify-content: space-around;
+  font-size: larger;
+  font-weight: lighter;
+  height: 30%;
+  text-transform: uppercase;
+  font-size: 0.938rem;
+  line-height: 1.563rem;
+  letter-spacing: 0.33rem;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .breakfast {
+  background-image: linear-gradient(to bottom, transparent 50%, #FFE6E6 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .lunch {
+  background-image: linear-gradient(to bottom, transparent 50%, #fdebd3 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .diner {
+  background-image: linear-gradient(to bottom, transparent 50%, #DAEAF1 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .dessert {
+  background-image: linear-gradient(to bottom, transparent 50%, #C2DED1 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .snack {
+  background-image: linear-gradient(to bottom, transparent 50%, #D9D7F1 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .vegetarian {
+  background-image: linear-gradient(to bottom, transparent 50%, #C4DFAA 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .vegan {
+  background-image: linear-gradient(to bottom, transparent 50%, #E4DCCF 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__header .card__title__block .card__content__description .classic {
+  background-image: linear-gradient(to bottom, transparent 50%, #ff9999 100%);
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-size: 96% 0.9em;
+  background-position: 0 36%;
+}
+.main__content__recipe__cards .card__content {
+  padding: 1rem;
+}
+.main__content__recipe__cards .card__content h3 {
+  font-family: Nothing You Could Do, cursive;
+  font-size: x-large;
+  padding-top: 1rem;
+  padding-bottom: 0.3rem;
+}
+.main__content__recipe__cards .card__content__ingredients .card__ingredients__list {
+  display: block;
+}
+.main__content__recipe__cards .card__content__ingredients .card__ingredients__list li {
+  display: block;
+  position: relative;
+  padding: 0.5rem 0 0.5rem 2.5rem;
+  cursor: pointer;
+  -webkit-animation: undone 0.5s;
+          animation: undone 0.5s;
+}
+.main__content__recipe__cards .card__content__ingredients .card__ingredients__list li::before {
+  content: "\f096"; /* empty square */
+  display: block;
+  position: absolute;
+  left: 0.7rem;
+  font: 1.5em "FontAwesome";
+}
+.main__content__recipe__cards .card__content__ingredients .card__ingredients__list li:hover, .main__content__recipe__cards .card__content__ingredients .card__ingredients__list ul:focus + li {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.main__content__recipe__cards .card__content__ingredients .card__ingredients__list ul:checked + li {
+  order: 2;
+  -webkit-animation: done 0.5s;
+          animation: done 0.5s;
+}
+.main__content__recipe__cards .card__content__ingredients .card__ingredients__list ul:checked + li::before {
+  content: "\f058"; /* circle checkmark */
+}
+.main__content__recipe__cards .card__content__directions .card__directions__list {
+  text-align: justify;
+  counter-reset: item;
+  padding: 0.5rem 0 0.5rem 2rem;
+}
+.main__content__recipe__cards .card__content__directions .card__directions__list li::before {
+  background: #588157;
+  border-radius: 50px;
+  color: #fff;
+  content: counter(item) "";
+  counter-increment: item;
+  display: inline-flex;
+  height: 1.2rem;
+  justify-content: center;
+  padding-left: -5rem;
+  margin-left: -32px;
+  position: absolute;
+  width: 1.2rem;
+}
+.main__content__recipe__cards .card__content__directions .card__directions__list li {
+  padding-left: 0.7rem;
+  margin: 0.5rem 0;
+}
+.main__content__recipe__cards .card__footer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: spxace-around;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 0.9rem;
+  background-color: #ebeddb;
+}
+.main__content__recipe__cards .card__footer div {
   display: flex;
   flex-direction: row;
   justify-content: end;
 }
-.main__content__recipe__cards .card .card__footer hr {
-  border-width: 0 0 3px;
-  -o-border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
-     border-image: linear-gradient(90deg, rgba(126, 175, 81, 0), #7eaf51 50%, rgba(126, 175, 81, 0) 100%) 0 0 100%;
-  border-style: solid;
+.main__content__recipe__cards .card__footer .card_prepTime_title {
+  font-weight: 800;
+}
+.main__content__recipe__cards .card__footer hr {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

@@ -48,3 +48,9 @@ console.log(position);
  cardName.appendChild(category);
  cardName.appendChild(diet);
 
+
+
+
+
+
+ 
