@@ -3,6 +3,8 @@
 @import "assests/_functions_mixin.scss";
 @import "assests/_cardsStyle";
 
+$mediumScreen: "only screen and (min-width: 43em) and (max-width: 100em)";
+$smallScreen:  "only screen and (max-width: 43em)";
 
 html{
     scroll-behavior: smooth;
@@ -17,13 +19,15 @@ html{
     text-align: center;
     //Style of the navbar
     & .header__nav{
+        border-top: solid 0.5rem $medium-green;
         display: flex;
         flex-direction: row-reverse;
 
-        border-top: solid 0.5rem $medium-green;
+            @media #{$smallScreen}{
+                flex-direction: row;
+            }
     //Style of the links
         & .nav__list{
-            
             font-size: 1.5rem;
             font-weight: lighter;
             color: #{$grey-details};
@@ -34,6 +38,13 @@ html{
             justify-content: space-around;
 
             flex: 50%;
+
+                @media #{$mediumScreen}{
+                    font-size: 1.2rem;
+                }
+                @media #{$smallScreen}{
+                    display: none;
+                }
 
             a {
                 text-decoration: none;
@@ -68,6 +79,13 @@ html{
             font-size: 10rem;
             font-family: $font-titles;
             padding-top: 3rem;
+                @media #{$mediumScreen}{
+                    font-size: 8rem;
+                }
+                @media #{$smallScreen}{
+                    padding-top: 40%;
+                    font-size: 6rem;
+            }
            }
         }  
         
@@ -87,24 +105,41 @@ html{
     justify-content: center;
     gap: 1rem;
     align-items: center;
-  
     height: 15rem;
+    text-align: center;
+
+    padding: 10rem 10rem 10rem 10rem;
 
     box-shadow: -3px 19px 14px -7px rgba(88,129,87,0.44);
+
+            @media #{$mediumScreen}{
+                height: 30rem;
+            }
+            @media #{$smallScreen}{
+                height: 45rem;
+            }
 
     & .description__title{
         color:$medium-green;
         font-size: 3.5rem;
         font-weight: 800;
         font-family: $font-titles;
+
+            @media #{$mediumScreen}{
+                font-size: 3rem;
+            }
+            @media #{$smallScreen}{
+                font-size: 2.2rem;
+                width: 70vw;
+            }
     }
     & .description_texte{
         color:#98a281;
         font-size: 1.3rem;
         width: 76vw;
-        text-align: center;
+        text-align:justify;
         line-height: 2rem;
-        font-weight: 200
+        font-weight: 200;
     }
 }
 
@@ -114,5 +149,38 @@ html{
     @include cardStyle;
 }
 
+//FOOTER
+.footer{
+    background-color: $medium-green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        &__logo{
+            height: 10rem;
+            width: 10rem;
+            object-fit: cover;
+        }
+        &__text{
+            font-family: $font-titles;
+            font-size: 1.3rem;
+        
+            padding: 1rem 0rem 1rem 0rem;
+        }
+        &__media{
+            width: 15vw;
+        
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-bottom: 1rem;
 
+                &__icon{
+                    height: 2rem;
+                    width: 2rem;
+                    object-fit: cover;
+                }
+        }
+}
 
+    

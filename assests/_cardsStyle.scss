@@ -2,30 +2,83 @@
 
 display:flex;
 flex-direction: row;
-flex-wrap: wrap;
+flex-wrap:wrap;
 width: 100vw;
 
-justify-content: space-around;
 
-padding: 2rem;
+justify-content: space-between;
+gap: 2rem;
+
+padding: 6rem;
+
+@media #{$mediumScreen}{
+    padding: 1rem;
+    gap: 1rem;
+}
+@media #{$smallScreen}{
+    padding: 1rem;
+}
 
 
     & .card{
-        width: 30vw;
+        width: 28vw;
         height: 100%;
         overflow: hidden;
 
         padding: 0.5rem;
-        box-shadow: 1px 1px 2px 2px rgba(128, 128, 128, 0.56);
+        box-shadow: 1px 1px 2px 2px rgba(114, 134, 100, 0.56);
 
-
-        &__image{
-            padding: 0;
-            width:  100%;
-            height: 20vw;
-            
-            object-fit: cover;
+        @media #{$mediumScreen}{
+            width: 47vw;
         }
+        @media #{$smallScreen}{
+            width: 100vw;
+        }
+
+        &__image__box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+                .card__image{
+                    position: relative;
+                    height: 18rem;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                button{
+                    position: absolute;
+                    text-align: center;
+                    line-height: 2.5rem;
+                    
+
+                    background-color: rgba(82, 82, 81, 0.439);
+                    border: rgba(255, 255, 255, 0.251) solid 1px;
+                    width: 13%;
+                    height: 5%;
+                    border-radius: 2rem;
+
+                    color: white;
+                    font-weight: 900;
+
+                    cursor:pointer;
+
+                    @media #{$mediumScreen}{
+                        width: 22%;
+                    }
+                    @media #{$smallScreen}{
+                        width: 55%;
+                    }
+                }
+                button:hover{
+                    background-color:rgba(82, 82, 81, 0.692);
+                    
+                }
+        
+                
+        }
+
+
+        
         &__header{
                 & .card__title__block{
                     text-align: center;
@@ -34,7 +87,7 @@ padding: 2rem;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    
+                        
                     & .card__title{
                         font-family: $font-titles;
                         text-transform: uppercase;
@@ -44,13 +97,19 @@ padding: 2rem;
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                        @media #{$mediumScreen}{
+                            font-size: 1.6rem;
+                        }
+                        @media #{$smallScreen}{
+                            font-size: 1.4rem;
+                        }
                     }
                     & .card__content__description{
                         display: flex;
                         justify-content: space-around;
                         font-size: larger;
                         font-weight: lighter;
-                        height: 30%;
+                        height: 50%;
                         @include description;
                         
                         & .breakfast{
@@ -85,6 +144,7 @@ padding: 2rem;
 
         &__content{
             padding: 1rem;
+            display: none;
 
                 h3{
                     font-family: $font-titles;
@@ -96,35 +156,21 @@ padding: 2rem;
                 &__ingredients{
                    .card__ingredients__list{
                         display: block;
+                 
                     
                       li{
-                        display: block;
                         position: relative;
                         padding: 0.5rem 0 0.5rem 2.5rem;
                         cursor: pointer;
-                        animation: undone .5s;
                       }
                       
-                      li::before {
-                        content: "\f096"; /* empty square */
+                      input {
                         display: block;
                         position: absolute;
                         left: 0.7rem;
-                        font: 1.5em 'FontAwesome';
+                        top:0.5rem;
                       }
-                      
-                      li:hover, ul:focus + li {
-                        background-color: rgba(255, 255, 255, .2);
-                      }
-                      
-                      ul:checked + li {
-                        order: 2;
-                        animation: done .5s;
-                      }
-                      
-                      ul:checked + li::before {
-                        content: '\f058'; /* circle checkmark */
-                      }
+
                    }
                 }
                
@@ -164,13 +210,18 @@ padding: 2rem;
                 padding: 1rem;
                 display: flex;
                 flex-direction: row;
-                justify-content: spxace-around;
+                justify-content: space-around;
 
                 text-transform: uppercase;
                 font-weight: 100;
                 font-size: 0.9rem;
 
                 background-color: $light-green;
+
+                @media #{$smallScreen}{
+                    font-size: 0.8rem;
+                }
+                
                 
                 div{
                     display: flex;
@@ -185,5 +236,7 @@ padding: 2rem;
                 }
             }
 
+            //creating the hidden cards
+            .hide {display:none;}
     }
 }

@@ -80,7 +80,7 @@ const collectionRecipe = [
       name: "Italian Peppers and Chickpeas",
       category: "Lunch",
       diet: "vegan",
-      photo: 'assests/chickpeas.jpeg',
+      photo: 'assests/pois.jpg',
       serves: 6,
       preparationTime: "30 minutes",
       ingredients: [
@@ -136,7 +136,7 @@ const collectionRecipe = [
     name: "Chicken Fajitas",
     category: "Diner",
     diet: "Classic",
-    photo: 'assests/fajita.jpeg',
+    photo: 'assests/poulet.jpeg',
     serves: 6,
     preparationTime: "30 minutes",
     ingredients: [
@@ -166,7 +166,7 @@ const collectionRecipe = [
     name: "2-Ingredients Ice Cream",
     category: "Dessert",
     diet: "vegetarian",
-    photo: 'assests/ice_Cream.jpeg',
+    photo: 'assests/vanilla.jpg',
     serves: 3,
     preparationTime: "20 minutes",
     ingredients: [
@@ -275,11 +275,21 @@ function showName(list){
         
 
         //CREATE CARD HEADER OF MY CARD
+          //CREATE DIV FOR IMAGE AN TEXT
+          let cardImageBox= document.createElement("div");
+          articleDiv.appendChild(cardImageBox);
+          cardImageBox.classList.add("card__image__box")
+
           //Create image 
           let img = document.createElement('img');
           img.src=(list[i].photo);
-          articleDiv.appendChild(img);
+          cardImageBox.appendChild(img);
           img.classList.add("card__image");
+
+          let clickHere= document.createElement('button');
+          clickHere.innerText= 'Click here for full recipe';
+          cardImageBox.appendChild(clickHere);
+          clickHere.classList.add("card__image__button");
           // CREATE THE SECTION
           let cardHeader= document.createElement("section");
           articleDiv.appendChild(cardHeader);
@@ -375,7 +385,6 @@ function showName(list){
                  
                   ingredientsDiv.appendChild(ingredients);
                   ingredients.classList.add("card__ingredients__list");
-                  ingredients.setAttribute("type", "checkbox");
 
 
                       //CREATE A LIST OF INGREDIENTS ITEMS THROUGH A LOOP
@@ -383,6 +392,16 @@ function showName(list){
 
                         for (const j of listOfIngredients) {
                           let listItemIngredient = document.createElement('li');
+
+                          //add a label for the check box
+                          let labelCheck= document.createElement("label");
+                          listItemIngredient.appendChild(labelCheck);
+
+                          //add a input and checkbox style to each li
+                          let inputCheck = document.createElement("input");
+                          listItemIngredient.appendChild(inputCheck);
+                          inputCheck.setAttribute("type", "checkbox");
+
                           listItemIngredient.appendChild(document.createTextNode(j))
                           ingredients.appendChild(listItemIngredient);
                           listItemIngredient.classList.add("card__ingredients__list__items");
@@ -471,11 +490,22 @@ function showName(list){
 showName(collectionRecipe);
 
 
-//Creating new elements not in Collection
+//create var for my button
+var recipeButton= document.querySelectorAll('.card__image__button');
+//creates nodeList for the cards to expand
+var card = document.querySelectorAll('.card');
+//creates nodeList for the text areas
+var cardText = document.querySelectorAll('.card__content');
+//creates variable for the specific text area
+//next puts the nodeList of .card-text into an array and hides them all
+//finally removes class hide on the targeted .card-text
+function showHide(){
+    var target = this.querySelector('.card__content');
+    [].forEach.call(cardText,function(x){x.classList.add('card__content');});
+    target.classList.remove('card__content');
+}
+//creates an array of card, runs through it, and adds an eventListener to each, on click it executes showHide()
+[collectionRecipe].forEach.call(card, function(e){e.addEventListener('click',showHide,false);});
 
+recipeButton.onclick= showHide();
 
-      
-        
-        // insert the element before target element
-
-        
