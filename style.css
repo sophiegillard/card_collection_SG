@@ -309,6 +309,12 @@ html {
 .main__content__recipe__cards .card__content__ingredients .card__ingredients__list {
   display: block;
 }
+.main__content__recipe__cards .card__content__ingredients .card__ingredients__list__title {
+  font-family: "Nothing You Could Do", cursive;
+  font-size: x-large;
+  padding-top: 1rem;
+  padding-bottom: 0.3rem;
+}
 .main__content__recipe__cards .card__content__ingredients .card__ingredients__list li {
   position: relative;
   padding: 0.5rem 0 0.5rem 2.5rem;

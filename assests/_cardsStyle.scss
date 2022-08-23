@@ -143,20 +143,26 @@ padding: 6rem;
 
 
         &__content{
-            padding: 1rem;
+            padding: 1rem;  
             display: none;
 
-                h3{
-                    font-family: $font-titles;
-                    font-size: x-large;
-                    padding-top: 1rem;
-                    padding-bottom: 0.3rem;
-                }
+            h3{
+                font-family: $font-titles;
+                font-size: x-large;
+                padding-top: 1rem;
+                padding-bottom: 0.3rem;
                 
+            }
                 &__ingredients{
                    .card__ingredients__list{
                         display: block;
                  
+                        &__title{
+                            font-family: $font-titles;
+                            font-size: x-large;
+                            padding-top: 1rem;
+                            padding-bottom: 0.3rem;
+                        }
                     
                       li{
                         position: relative;

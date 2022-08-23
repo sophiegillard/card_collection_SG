@@ -28,7 +28,8 @@ $font-body: 'Plus Jakarta Sans', sans-serif;
     letter-spacing: 0.33rem;
 }
 @mixin underline ($color){
-    background-image: linear-gradient(to bottom, transparent 50%, $color 100%);  
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 10%, rgba(110,29,16,1) 10%, rgba(110,29,16,1) 90%, rgba(255,255,255,1) 90%);  
     border-radius: 0;
     background-repeat: no-repeat;
     background-size: 96% 0.9em;
