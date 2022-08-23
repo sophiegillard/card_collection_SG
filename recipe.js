@@ -1,193 +1,103 @@
+//VARIABLES
+let articleDiv;
+let cardImageBox;
+let image;
+let openButton;
+let cardHeader;
+let cardName;
+let recipeName;
+let cardDescription;
+let categoryRecipe;
+let dietRecipe;
+let cardContent;
+let ingredientsDiv
+let hr
+let ingredientsTitle
+let ingredients
+let directionsDiv
+let directionsTitle
+let directions
+
 
 // FETCHING the Collection of recipes
-fetch("collection.json")
-    .then((response) => response.json())
-    .then((json) => {
-      console.log(json);
-      showName(json.recipe)
-    })
+const fetchRecipes = async (url) =>{
 
-function showName(list){
+    try{
+        const response = await fetch(url);
+        const result = await response.json()
+        console.log(result)
 
+        getCards(result)
+        }
+
+    catch(e){
+        alert('error')
+        console.error(e)
+    }
+  
+}
+
+fetchRecipes("collection.json")
+
+// CREATE FUNCTION TO GENERATE THE CARDS
+function getCards(list){
+
+  //Variables for the function
   let numberOfRecipe = list.length;
   let containerCard = document.querySelector('.main__content__recipe__cards');
+  console.log(articleDiv)
+  
   
   // Loop that creates a section and a paragraph for each element of the list
       for (let i = 0; i < numberOfRecipe; i++) {
-  
+        console.log(list[i].category)
+
+//Create card div and place it in the main container HTML
+      createCard(containerCard, list[i].id)
+
   //adding new elements from COLLECTION
-        //CREATE THE INDIVIDUAL DIV OF MY CARDS
-        let articleDiv = document.createElement('div');
-        containerCard.appendChild(articleDiv);
-        articleDiv.classList.add("card");
+          createCardImageBox()
+          createCardImage(list[i].photo)
+          createButton()
+          createCardHeader()
+          setName()
+          setNameElement(list[i].name)
+          createDivDescription()
+          setCategory(list[i].category)
+          setDiet(list[i].diet);
+          createContentSection()
+          setIngredients()
+          createHR(ingredientsDiv)
+          setTitleH3(ingredientsTitle, ingredientsDiv, "card__ingredients__title")
+          createIngredientsList()
 
-        
+          console.log(list[i].ingredients)
+          setListItems(list[i].ingredients, ingredients)
+          setDirections()
+          setTitleH3(directionsTitle, directionsDiv, "card__directions__title")
+          createDirectionsList()
 
-        //CREATE CARD HEADER OF MY CARD
-          //CREATE DIV FOR IMAGE AN TEXT
-          let cardImageBox= document.createElement("div");
-          articleDiv.appendChild(cardImageBox);
-          cardImageBox.classList.add("card__image__box")
-
-          //Create image 
-          let img = document.createElement('img');
-          img.src=(list[i].photo);
-          cardImageBox.appendChild(img);
-          img.classList.add("card__image");
-
-          let clickHere= document.createElement('button');
-          clickHere.innerText= 'Click here for full recipe';
-          cardImageBox.appendChild(clickHere);
-          clickHere.classList.add("card__image__button");
-          // CREATE THE SECTION
-          let cardHeader= document.createElement("section");
-          articleDiv.appendChild(cardHeader);
-          cardHeader.classList.add("card__header");
-
-          //create ARTICLE Name
-          let cardName= document.createElement('article');
-          cardHeader.appendChild(cardName);
-          cardName.classList.add("card__title__block");
-          // Create name element
-          let name = document.createElement('h2');
-          let nameText= document.createTextNode(list[i].name);
-          name.appendChild(nameText);
-          cardName.appendChild(name);
-          name.classList.add("card__title");
-          //create Div for category & diet
-          let catDiet = document.createElement('div');
-          cardName.appendChild(catDiet);
-          catDiet.classList.add("card__content__description");
-          //Create category paragraph
-          let category = document.createElement('p');
-          let categoryText= document.createTextNode(list[i].category);
-          category.appendChild(categoryText);
-          catDiet.appendChild(category);
-          category.classList.add("card__category");
-          
-                    //NAME CLASS ACCORDING TO CATEGORY
-                      let categoryLength= list[i].category;
-
-                        if(categoryLength=="Breakfast"){
-                        category.classList.add("breakfast");
-                        } 
-                        else if (categoryLength=="Lunch") {
-                          category.classList.add("lunch");
-                        } 
-                        else if (categoryLength=="Diner") {
-                          category.classList.add("diner");
-                        } 
-                        else if (categoryLength=="Snack") {
-                          category.classList.add("snack");
-                        } 
-                        else if (categoryLength=="Dessert") {
-                          category.classList.add("dessert");
-                        } 
-           
-
-          //Create diet paragraph
-          let diet = document.createElement('p');
-          let dietText= document.createTextNode(list[i].diet);
-          diet.appendChild(dietText);
-          catDiet.appendChild(diet);
-          diet.classList.add("card__diet");
-
-                    //NAME CLASS ACCORDING TO DIET
-                      let dietLength= list[i].diet;
-
-                        if(dietLength=="vegetarian"){
-                        diet.classList.add("vegetarian");
-                        } 
-                        else if (dietLength=="vegan") {
-                          diet.classList.add("vegan");
-                        } 
-                        else if (dietLength=="Classic") {
-                          diet.classList.add("classic");
-                        } 
-                      
-           
-      
-
-        //create SECTION card_content
-          let cardContent = document.createElement('section');
-          cardContent.classList.add("card__content");
-          articleDiv.appendChild(cardContent);
-      
-          //create Ingredients SECTION
-          let ingredientsDiv = document.createElement('div');
-          cardContent.appendChild(ingredientsDiv);
-          ingredientsDiv.classList.add("card__content__ingredients");
-
-          //CREATING OF A HORIZONTAL LINE
-          let hr = document.createElement('hr');
-          ingredientsDiv.appendChild(hr);
-
-                  //create the ingredients title
-                  let ingredientsTitle = document.createElement('h3');
-                  // add text
-                  ingredientsTitle.innerText = 'Ingredients :';
-                  // grab target element reference
-                  ingredientsDiv.appendChild(ingredientsTitle);
-                  ingredientsTitle.classList.add("card__ingredients__title");
-
-                    //create the ingredients LIST      
-                  let ingredients = document.createElement('ul');
-                 
-                  ingredientsDiv.appendChild(ingredients);
-                  ingredients.classList.add("card__ingredients__list");
-
+          setListItems(list[i].directions, directions)
 
                       //CREATE A LIST OF INGREDIENTS ITEMS THROUGH A LOOP
-                        let listOfIngredients= list[i].ingredients;
+                        // let listOfIngredients= list[i].ingredients;
 
-                        for (const j of listOfIngredients) {
-                          let listItemIngredient = document.createElement('li');
+                        // for (const j of listOfIngredients) {
+                        //   let listItemIngredient = document.createElement('li');
 
-                          //add a label for the check box
-                          let labelCheck= document.createElement("label");
-                          listItemIngredient.appendChild(labelCheck);
+                        //   //add a label for the check box
+                        //   let labelCheck= document.createElement("label");
+                        //   listItemIngredient.appendChild(labelCheck);
 
-                          //add a input and checkbox style to each li
-                          let inputCheck = document.createElement("input");
-                          listItemIngredient.appendChild(inputCheck);
-                          inputCheck.setAttribute("type", "checkbox");
+                        //   //add a input and checkbox style to each li
+                        //   let inputCheck = document.createElement("input");
+                        //   listItemIngredient.appendChild(inputCheck);
+                        //   inputCheck.setAttribute("type", "checkbox");
 
-                          listItemIngredient.appendChild(document.createTextNode(j))
-                          ingredients.appendChild(listItemIngredient);
-                          listItemIngredient.classList.add("card__ingredients__list__items");
-                        };
-
-          //create Directions SECTION
-          let directionsDiv = document.createElement('div');
-          cardContent.appendChild(directionsDiv);
-          directionsDiv.classList.add("card__content__directions");
-
-                 //create the ingredients title
-                 let directionsTitle = document.createElement('h3');
-                 // add text
-                 directionsTitle.innerText = 'Directions :';
-                 // grab target element reference
-                 directionsDiv.appendChild(directionsTitle);
-                 directionsTitle.classList.add("card__directions__title");
-
-            //create the directions List    
-          let directions = document.createElement('ul');
-          directionsDiv.appendChild(directions);
-          directions.classList.add("card__directions__list");
-          directions.setAttribute("type", "checkbox");
-          
-
-
-                  //CREATE A LIST OF DIRECTIONS ITEMS THROUGH A LOOP
-                  let listOfDirections= list[i].directions;
-          
-                  for (const j of listOfDirections) {
-                    let listItemDirections = document.createElement('li');
-                    listItemDirections.appendChild(document.createTextNode(j))
-                    directions.appendChild(listItemDirections);
-                    listItemDirections.classList.add("card__directions__list__items");
-                  };
-
+                        //   listItemIngredient.appendChild(document.createTextNode(j))
+                        //   ingredients.appendChild(listItemIngredient);
+                        //   listItemIngredient.classList.add("card__ingredients__list__items");
+                        // }
 
         //create section card_footer
           let cardFooter = document.createElement('section');
@@ -238,6 +148,149 @@ function showName(list){
 }  
   
 
+//FUNCTION to add new elements from COLLECTION
+  //CREATE THE INDIVIDUAL DIV OF MY CARDS
+const createCard = (container, listId) =>{
+    articleDiv = document.createElement('div');
+    container.appendChild(articleDiv);
+    articleDiv.classList.add("card");
+    articleDiv.classList.add(listId);
+    console.log(articleDiv)
+}
+
+  //CREATE DIV FOR IMAGE AN TEXT
+const createCardImageBox = () =>{
+    cardImageBox = document.createElement("div");
+    articleDiv.appendChild(cardImageBox);
+    cardImageBox.classList.add("card__image__box")
+}
+
+ //Create image  
+const createCardImage = (imgSrc) =>{
+    image = document.createElement('img');
+    image.src=imgSrc;
+    cardImageBox.appendChild(image);
+    image.classList.add("card__image");
+}
+
+  //Create the button
+  const createButton = () =>{
+    openButton= document.createElement('button');
+    openButton.innerText= 'Click here for full recipe';
+    cardImageBox.appendChild(openButton);
+    openButton.classList.add("card__image__button");
+}
+  
+  // CREATE THE SECTION
+const createCardHeader = () =>{
+    cardHeader= document.createElement("section");
+    articleDiv.appendChild(cardHeader);
+    cardHeader.classList.add("card__header");
+}
+
+  // Create name element
+const setName = () =>{
+    cardName= document.createElement('article');
+    cardHeader.appendChild(cardName);
+    cardName.classList.add("card__title__block");
+
+}
+
+const setNameElement = (title) =>{
+    recipeName = document.createElement('h2');
+    let nameText= document.createTextNode(title);
+    recipeName.appendChild(nameText);
+    cardName.appendChild(recipeName);
+    recipeName.classList.add("card__title");
+}
+
+  //create Div for category & diet
+const createDivDescription = () =>{
+  cardDescription = document.createElement('div');
+  cardName.appendChild(cardDescription);
+  cardDescription.classList.add("card__content__description");
+}
+
+  // SET category to each cards
+const setCategory = (category) =>{
+  categoryRecipe = document.createElement('p');
+  categoryRecipe.innerHTML = category;
+  cardDescription.appendChild(categoryRecipe);
+  categoryRecipe.classList.add("card__category");
+  categoryRecipe.classList.add(category);
+}
+
+  // SET diet to each cards
+const setDiet = (diet) =>{
+  let dietRecipe = document.createElement('p');
+  dietRecipe.innerHTML= diet ;
+  cardDescription.appendChild(dietRecipe);
+  dietRecipe.classList.add("card__diet");
+  dietRecipe.classList.add(diet)
+}
+
+  //create SECTION card_content
+const createContentSection = () =>{
+  cardContent = document.createElement('section');
+  cardContent.classList.add("card__content");
+  articleDiv.appendChild(cardContent);
+}
+
+  //create Ingredients SECTION
+const setIngredients = () =>{
+  ingredientsDiv = document.createElement('div');
+  cardContent.appendChild(ingredientsDiv);
+  ingredientsDiv.classList.add("card__content__ingredients");
+}
+
+  //CREATING OF A HORIZONTAL LINE
+const createHR = (parent) =>{
+  let hr = document.createElement('hr');
+  parent.appendChild(hr);
+  return hr;
+}
+
+  //create the ingredients List
+const createIngredientsList = () =>{
+  ingredients = document.createElement('ul');          
+  ingredientsDiv.appendChild(ingredients);
+  ingredients.classList.add("card__ingredients__list");
+}
+
+//create Directions SECTION
+const setDirections = () =>{
+  directionsDiv = document.createElement('div');
+  cardContent.appendChild(directionsDiv);
+  directionsDiv.classList.add("card__content__directions");
+
+}
+
+  //create the ingredients List
+const createDirectionsList = () =>{
+directions = document.createElement('ul');
+directionsDiv.appendChild(directions);
+directions.classList.add("card__directions__list");
+directions.setAttribute("type", "checkbox");
+}
+
+
+  // CREATE LIST ITEMS
+const setListItems = (array, position) =>{
+    array.map(element => {
+    const listItem = document.createElement('li')
+    listItem.innerHTML= element;
+    position.appendChild(listItem)
+
+  })
+}
+
+  // Create H3 titles
+const setTitleH3 = (x, y , classP) =>{
+  x = document.createElement('h3');
+  x.innerText = 'Directions :';
+  y.appendChild(x);
+  x.classList.add(classP);
+}
 
 //create var for my button
 var recipeButton= document.querySelectorAll('.card__image__button');

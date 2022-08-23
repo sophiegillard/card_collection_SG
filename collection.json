@@ -1,6 +1,6 @@
-{ "recipe":
     [
         {   
+        "id" : 0,
         "name": "Good Old Fashioned Pancakes",
         "category": "Breakfast",
         "diet": "vegetarian",
@@ -23,6 +23,7 @@
         },
 
         {
+        "id" : 1,
         "name": "French Toast ",
         "category": "Breakfast",
         "diet": "vegetarian",
@@ -46,6 +47,7 @@
         },
 
          {
+        "id" : 2,    
         "name": "Salmon Poke Bowl",
         "category": "Lunch",
         "diet": "Classic",
@@ -75,6 +77,7 @@
         },
 
         {
+        "id" : 3, 
         "name": "Italian Peppers and Chickpeas",
         "category": "Lunch",
         "diet": "vegan",
@@ -106,6 +109,7 @@
        },
 
        {
+        "id" : 4,
         "name": "Spaghetti Carbonara",
         "category": "Diner",
         "diet": "Classic",
@@ -131,6 +135,7 @@
         },
 
     {
+        "id" : 5,
         "name": "Chicken Fajitas",
         "category": "Diner",
         "diet": "Classic",
@@ -161,6 +166,7 @@
        },
 
     {
+        "id" : 6,
         "name": "2-Ingredients Ice Cream",
         "category": "Dessert",
         "diet": "vegetarian",
@@ -181,6 +187,7 @@
        },
 
      {
+        "id" : 7,
         "name": "Chocolate mousse",
         "category": "Dessert",
         "diet": "vegetarian",
@@ -207,6 +214,7 @@
     },
 
     {
+        "id" : 8,
         "name": "Smoothie",
         "category": "Snack",
         "diet": "vegan",
@@ -227,6 +235,7 @@
     },
 
     {
+        "id" : 9,
         "name": "Soft Oatmeal Cookies",
         "category": "Snack",
         "diet": "vegetarian",
@@ -254,4 +263,3 @@
         ]
        }
      ]
-    }
