@@ -17,6 +17,13 @@ let ingredients
 let directionsDiv
 let directionsTitle
 let directions
+let cardFooter;
+let servesDiv
+let servesTitle
+let serves
+let timeDiv;
+let timeTitle
+let preparationTime
 
 
 // FETCHING the Collection of recipes
@@ -38,6 +45,7 @@ const fetchRecipes = async (url) =>{
 }
 
 fetchRecipes("collection.json")
+
 
 // CREATE FUNCTION TO GENERATE THE CARDS
 function getCards(list){
@@ -68,16 +76,20 @@ function getCards(list){
           createContentSection()
           setIngredients()
           createHR(ingredientsDiv)
-          setTitleH3(ingredientsTitle, ingredientsDiv, "card__ingredients__title")
+          setTitleH3(ingredientsTitle, ingredientsDiv, "card__ingredients__title", "Ingredients :")
           createIngredientsList()
-
-          console.log(list[i].ingredients)
           setListItems(list[i].ingredients, ingredients)
           setDirections()
-          setTitleH3(directionsTitle, directionsDiv, "card__directions__title")
+          setTitleH3(directionsTitle, directionsDiv, "card__directions__title", "Directions :")
           createDirectionsList()
-
           setListItems(list[i].directions, directions)
+          createFooterSection()
+          createServesDiv()
+          setTitleH3(servesTitle, servesDiv, "card__servesTime__title", "Serves  :")
+          setServes(list[i].serves)
+          createTimeDiv()
+          setTitleH3(timeTitle, timeDiv, "card__prepTime__title", "Preparation Time  :")
+          setTimePrep(list[i].preparationTime)
 
                       //CREATE A LIST OF INGREDIENTS ITEMS THROUGH A LOOP
                         // let listOfIngredients= list[i].ingredients;
@@ -99,50 +111,7 @@ function getCards(list){
                         //   listItemIngredient.classList.add("card__ingredients__list__items");
                         // }
 
-        //create section card_footer
-          let cardFooter = document.createElement('section');
-              let hrTwo = document.createElement('hr');
-              cardFooter.appendChild(hrTwo);
-          articleDiv.appendChild(cardFooter);
-          cardFooter.classList.add("card__footer");
-          //create serves SECTION
-              let servesDiv = document.createElement('div');
-              cardFooter.appendChild(servesDiv);
-              servesDiv.classList.add("card__footer__serves");
-
-                  //create the title
-                  let servesTitle = document.createElement('h3');
-                  // add text
-                  servesTitle.innerText = 'Serves  : ';
-                  // grab target element reference
-                  servesDiv.appendChild(servesTitle);
-                  servesTitle.classList.add("card__servesTime__title");      
-
-
-          let serves = document.createElement('p');
-          let servesText= document.createTextNode(list[i].serves);
-          serves.appendChild(servesText);
-          servesDiv.appendChild(serves);
-          serves.classList.add("card__serves");
-          //create PrepTime SECTION
-              let timeDiv = document.createElement('div');
-              cardFooter.appendChild(timeDiv);
-              timeDiv.classList.add("card__footer__time");
-
-                 //create the title
-                 let timeTitle = document.createElement('h3');
-                 // add text
-                 timeTitle.innerText = 'Preparation Time  : ';
-                 // grab target element reference
-                 timeDiv.appendChild(timeTitle);
-                 timeTitle.classList.add("card__prepTime__title");  
-
-          let preparationTime = document.createElement('p');
-          let preparationTimeText= document.createTextNode(list[i].preparationTime);
-          preparationTime.appendChild(preparationTimeText);
-          timeDiv.appendChild(preparationTime);
-          preparationTime.classList.add("card__prepTime");
-
+  
         
       }
 }  
@@ -273,6 +242,42 @@ directions.classList.add("card__directions__list");
 directions.setAttribute("type", "checkbox");
 }
 
+ //create section card_footer
+const createFooterSection = () =>{
+  cardFooter = document.createElement('section');
+  articleDiv.appendChild(cardFooter);
+  cardFooter.classList.add("card__footer");
+}
+
+    //create serves DIV
+    const createServesDiv = () =>{
+      servesDiv = document.createElement('div');
+      cardFooter.appendChild(servesDiv);
+      servesDiv.classList.add("card__footer__serves");
+    }
+
+    //Set numbers of serves
+    const setServes = (servesNumber) =>{
+      serves = document.createElement('p');
+      serves.innerHTML= servesNumber;
+      servesDiv.appendChild(serves);
+      serves.classList.add("card__serves");
+    }
+    
+    //Create time DIV
+    const createTimeDiv = () =>{
+      timeDiv = document.createElement('div');
+      cardFooter.appendChild(timeDiv);
+      timeDiv.classList.add("card__footer__time");
+    }
+   
+    //Set time of preparation
+    const setTimePrep = (timePrep) =>{
+      preparationTime = document.createElement('p');
+      preparationTime.innerHTML= timePrep;
+      timeDiv.appendChild(preparationTime);
+      preparationTime.classList.add("card__prepTime");
+    }
 
   // CREATE LIST ITEMS
 const setListItems = (array, position) =>{
@@ -285,9 +290,9 @@ const setListItems = (array, position) =>{
 }
 
   // Create H3 titles
-const setTitleH3 = (x, y , classP) =>{
+const setTitleH3 = (x, y , classP, title) =>{
   x = document.createElement('h3');
-  x.innerText = 'Directions :';
+  x.innerText = title;
   y.appendChild(x);
   x.classList.add(classP);
 }
