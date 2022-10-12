@@ -1,14 +1,31 @@
-# card_collection_SG
-Collection of recipe cards
+# Card Collection
 
-This web page is a project to learn using HTML, CSS and JS. 
+## Web designers
+
+- Sophie
+
+## What is the project?
+This web page is a project to learn using HTML, CSS, SCSS. 
+
+It is a collection of recipe cards. 
+The cards appear closed. It is possible to see the entire recipe when clicking on the button whick open only the card selected. 
+
+I cerated the design myself. 
 
 Here is the link to my web page: https://sophiegillard.github.io/card_collection_SG/
 
 
+## Overview/Screenshot
+![recipe collection](/recipe_collection)
 
-J'ai créé le header et le footer sur HTML. 
+## When was it realised?
+July 2022
 
-Les collections ont été implantées dans HTML via JS. 
+The project has been realized during a 7-month web developer training. 
 
-J'ai essayé de créer un bouton mais il ne fonctionne pas.
+## Languages used
+HTML, SCSS, CSS, JS.
+
+## What needs to be improved, added?
+The responsive is not complete yet. 
+It is not possible to check the ingredients without closing the cards. 
