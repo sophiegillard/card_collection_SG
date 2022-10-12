@@ -16,7 +16,7 @@ Here is the link to my web page: https://sophiegillard.github.io/card_collection
 
 
 ## Overview/Screenshot
-![recipe collection](/assests/recipe_collection)
+![recipe collection](/assests/recipe_collection.png)
 
 ## When was it realised?
 July 2022
